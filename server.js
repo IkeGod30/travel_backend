@@ -19,6 +19,17 @@ const connect = mongoose.connect(process.env.MONGO_URI,
 app.use(cors({origin:'*'})) //
 
 
+// For Vercel deployment
+app.use(cors(
+  {
+    origin: ["https://travel-backend-eight.vercel.app"],
+    methods: ["POST", "GET"],
+    credentials: true
+
+  }
+  ));
+
+
 //to not get any deprecation warning or error
 //support parsing of application/x-www-form-urlencoded post data
 app.use(bodyParser.urlencoded({ extended: true }));
